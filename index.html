@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>ajax</title>
+  </head>
+  <body>
+    <div id="demo">
+      <h1>weather</h1>
+      <h2>the weather today is... </h2>
+      <h3>??</h3>
+      <button type="button" onclick="loadDoc()">Change content</button>
+    </div>
+
+    <script>
+      function loadDoc(){
+        var req = new XMLHttpRequest();
+        req.onreadystatechange = function() {
+          if(this.readState == 4 && this.status == 200){
+            document.querySelector("#demo").innerHTML = this.responseText;
+          }
+        }
+        req.open("GET", "weather.txt", true);
+        req.send();
+      }
+    </script>
+  </body>
+</html>
